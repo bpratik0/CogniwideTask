@@ -1,13 +1,11 @@
 package dagger;
 
-import com.cogniwide.cogniwidetask.RetrofitRepository;
 import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 import javax.inject.Singleton;
 
-import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -16,7 +14,7 @@ public class ApiModule {
 
     String mBaseUrl;
 
-    ApiModule(String mBaseUrl) {
+    public ApiModule(String mBaseUrl) {
         this.mBaseUrl = mBaseUrl;
     }
 
@@ -30,11 +28,10 @@ public class ApiModule {
 
     @Provides
     @Singleton
-    Retrofit provideRetrofit(Gson gson, OkHttpClient okHttpClient) {
+    Retrofit provideRetrofit(Gson gson) {
         return new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .baseUrl(mBaseUrl)
-                .client(okHttpClient)
                 .build();
     }
 }

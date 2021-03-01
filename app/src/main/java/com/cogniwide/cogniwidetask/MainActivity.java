@@ -62,7 +62,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-
     private void setEnableLoginButton() {
         mMainBinding.button.setEnabled(isEmailCorrect && isPasswordCorrect);
         if(isEmailCorrect && isPasswordCorrect) {
@@ -70,30 +69,4 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
-       /* mLoginViewModel.mLoginModelMutableLiveData.observe(this, new Observer<LoginModel>() {
-            @Override
-            public void onChanged(LoginModel loginModel) {
-                if (TextUtils.isEmpty(Objects.requireNonNull(loginModel).getEmail())) {
-                    mMainBinding.editEmail.setError("Enter an E-Mail Address");
-                    mMainBinding.editEmail.requestFocus();
-                }
-                else if (!loginModel.isEmailValid()) {
-                    mMainBinding.editEmail.setError("Enter a Valid E-mail Address");
-                    mMainBinding.editEmail.requestFocus();
-                }
-                else if (TextUtils.isEmpty(Objects.requireNonNull(loginModel).getPassword())) {
-                    mMainBinding.editPassword.setError("Enter a Password");
-                    mMainBinding.editPassword.requestFocus();
-                }
-                else if (!loginModel.isPasswordLengthGreaterThan5()) {
-                    mMainBinding.editPassword.setError("Enter at least 6 Digit password");
-                    mMainBinding.editPassword.requestFocus();
-                }
-                else {
-
-                }
-            }
-        });*/
-
 }

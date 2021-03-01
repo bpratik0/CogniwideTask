@@ -1,9 +1,7 @@
 package com.cogniwide.cogniwidetask;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -15,11 +13,11 @@ import java.util.List;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.UserViewHolder> {
 
-    List<PopularMoviesModel> popularMoviesModelList;
-    Context mContext;
+    private List<PopularMoviesModel> mPopularMoviesModelList;
+    private Context mContext;
 
     public CustomAdapter(Context context, List<PopularMoviesModel> popularMoviesModelList) {
-        this.popularMoviesModelList = popularMoviesModelList;
+        this.mPopularMoviesModelList = popularMoviesModelList;
         mContext = context;
     }
 
@@ -33,14 +31,14 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.UserViewHo
 
     @Override
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
-        final PopularMoviesModel user = popularMoviesModelList.get(position);
+        final PopularMoviesModel user = mPopularMoviesModelList.get(position);
         holder.moviesListItemBinding.setUser(user);
         holder.moviesListItemBinding.executePendingBindings();
     }
 
     @Override
     public int getItemCount() {
-        return popularMoviesModelList.size();
+        return mPopularMoviesModelList.size();
     }
 
     class UserViewHolder extends RecyclerView.ViewHolder {

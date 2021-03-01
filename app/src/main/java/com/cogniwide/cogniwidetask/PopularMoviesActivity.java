@@ -13,8 +13,6 @@ import com.cogniwide.cogniwidetask.databinding.ActivityPopulerMoviesBinding;
 
 import java.util.List;
 
-import dagger.MyApplication;
-
 public class PopularMoviesActivity extends AppCompatActivity {
 
     private ActivityPopulerMoviesBinding mPopulerMoviesBinding;
@@ -24,7 +22,6 @@ public class PopularMoviesActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        ((MyApplication) getApplication()).getNetComponent().inject(this);
         mPopulerMoviesBinding = DataBindingUtil.setContentView(this, R.layout.activity_populer_movies);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
         mPopulerMoviesBinding.recyclerMovies.setLayoutManager(gridLayoutManager);

@@ -3,7 +3,7 @@
     <data>
         <variable
             name="loginModel"
-            type="com.cogniwide.cogniwidetask.LoginViewModel" />
+            type="viewmodel.LoginViewModel" />
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:app="http://schemas.android.com/apk/res-auto"

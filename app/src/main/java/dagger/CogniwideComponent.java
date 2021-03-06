@@ -1,14 +1,18 @@
 package dagger;
 
-import com.cogniwide.cogniwidetask.PopularMovieViewModel;
-import com.cogniwide.cogniwidetask.RetrofitRepository;
+import com.cogniwide.cogniwidetask.PopularMoviesActivity;
+
+import viewmodel.PopularMovieViewModel;
+import retrofit.RetrofitRepository;
 
 import javax.inject.Singleton;
 
 @Singleton
-@Component(modules = {PopularMoviesModule.class, ApiModule.class})
+@Component(modules = {PopularMoviesModule.class, AppModule.class, NetworkModule.class})
 public interface CogniwideComponent {
     void inject(PopularMovieViewModel popularMovieViewModel);
 
-    void inject(RetrofitRepository retrofitRepository);
+    void inject(RetrofitRepository popularMoviesActivity);
+
+    void inject(PopularMoviesActivity popularMoviesActivity);
 }

@@ -1,4 +1,4 @@
-package com.cogniwide.cogniwidetask;
+package adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.cogniwide.cogniwidetask.databinding.MoviesListItemBinding;
 
 import java.util.List;
+
+import model.PopularMoviesModel;
 
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.UserViewHolder> {
 

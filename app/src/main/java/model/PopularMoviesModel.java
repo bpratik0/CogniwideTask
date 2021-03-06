@@ -1,4 +1,4 @@
-package com.cogniwide.cogniwidetask;
+package model;
 
 import android.widget.ImageView;
 

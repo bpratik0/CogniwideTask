@@ -11,6 +11,9 @@ import android.util.Patterns;
 
 import com.cogniwide.cogniwidetask.databinding.ActivityMainBinding;
 
+import model.LoginModel;
+import viewmodel.LoginViewModel;
+
 public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();

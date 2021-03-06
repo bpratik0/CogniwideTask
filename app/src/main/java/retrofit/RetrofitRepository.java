@@ -1,4 +1,6 @@
-package com.cogniwide.cogniwidetask;
+package retrofit;
+
+import android.content.Context;
 
 import androidx.lifecycle.MutableLiveData;
 
@@ -6,9 +8,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import dagger.ApiModule;
-import dagger.CogniwideComponent;
-import dagger.DaggerCogniwideComponent;
+import dagger.MyApplication;
+import model.MoviesResponseModel;
+import model.PopularMoviesModel;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -18,29 +20,29 @@ public class RetrofitRepository {
 
     private String API_KEY = "f106692af7b706f509359e6e8f9e6096";
     private RetrofitInterface mRetrofitService;
+    Context context;
     @Inject
     Retrofit mRetrofit;
 
     @Inject
-    public RetrofitRepository() {
-
+    public RetrofitRepository(Context context) {
+        this.context = context;
     }
 
     public MutableLiveData<List<PopularMoviesModel>> getPopularMovies() {
+        ((MyApplication) context).getNetComponent().inject(this);
         MutableLiveData<List<PopularMoviesModel>> poListMutableLiveData = new MutableLiveData<>();
-        CogniwideComponent cogniwideComponent = DaggerCogniwideComponent.builder().apiModule(new ApiModule("http://api.themoviedb.org/3/movie/")).build();
-        cogniwideComponent.inject(this);
         mRetrofitService = mRetrofit.create(RetrofitInterface.class);
-        Call<MoviesResponse> call = mRetrofitService.getTopRatedMovies(API_KEY);
-        call.enqueue(new Callback<MoviesResponse>() {
+        Call<MoviesResponseModel> call = mRetrofitService.getTopRatedMovies(API_KEY);
+        call.enqueue(new Callback<MoviesResponseModel>() {
             @Override
-            public void onResponse(Call<MoviesResponse> call, Response<MoviesResponse> response) {
-                MoviesResponse dataList = response.body();
+            public void onResponse(Call<MoviesResponseModel> call, Response<MoviesResponseModel> response) {
+                MoviesResponseModel dataList = response.body();
                 poListMutableLiveData.setValue(dataList.getResults());
             }
 
             @Override
-            public void onFailure(Call<MoviesResponse> call, Throwable t) {
+            public void onFailure(Call<MoviesResponseModel> call, Throwable t) {
                 poListMutableLiveData.setValue(null);
             }
         });

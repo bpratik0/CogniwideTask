@@ -1,10 +1,10 @@
-package com.cogniwide.cogniwidetask;
+package model;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class MoviesResponse {
+public class MoviesResponseModel {
     @SerializedName("page")
     private int page;
     @SerializedName("results")

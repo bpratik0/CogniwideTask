@@ -13,20 +13,24 @@ import com.cogniwide.cogniwidetask.databinding.ActivityPopulerMoviesBinding;
 
 import java.util.List;
 
+import adapter.CustomAdapter;
+import model.PopularMoviesModel;
+import viewmodel.PopularMovieViewModel;
+
 public class PopularMoviesActivity extends AppCompatActivity {
 
     private ActivityPopulerMoviesBinding mPopulerMoviesBinding;
     private PopularMovieViewModel mPopularMovieViewModel;
+    private GridLayoutManager mGridLayoutManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         mPopulerMoviesBinding = DataBindingUtil.setContentView(this, R.layout.activity_populer_movies);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
-        mPopulerMoviesBinding.recyclerMovies.setLayoutManager(gridLayoutManager);
+        mGridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
+        mPopulerMoviesBinding.recyclerMovies.setLayoutManager(mGridLayoutManager);
         mPopularMovieViewModel = ViewModelProviders.of(this).get(PopularMovieViewModel.class);
-        mPopularMovieViewModel.init();
         mPopularMovieViewModel.getNewsRepository().observe(this, new Observer<List<PopularMoviesModel>>() {
             @Override
             public void onChanged(List<PopularMoviesModel> populerMoviesModels) {
@@ -35,4 +39,5 @@ public class PopularMoviesActivity extends AppCompatActivity {
             }
         });
     }
+
 }

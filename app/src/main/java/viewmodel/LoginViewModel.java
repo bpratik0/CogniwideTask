@@ -1,9 +1,11 @@
-package com.cogniwide.cogniwidetask;
+package viewmodel;
 
 import android.view.View;
 
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import model.LoginModel;
 
 public class LoginViewModel extends ViewModel {
 

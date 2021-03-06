@@ -8,7 +8,7 @@
 
         <variable
             name="user"
-            type="com.cogniwide.cogniwidetask.PopularMoviesModel" />
+            type="model.PopularMoviesModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
